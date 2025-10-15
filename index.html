@@ -19,15 +19,18 @@
   }
 
     .image-container {
-      margin: 20px auto;
-      width: 250px;
-      height: 250px;
-      background-image: url('nen.png');
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-    }
+  margin: 20px auto;
+  width: 150px;
+  height: auto;
+  display: inline-block;
+}
+
+.image-container img {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); /* chỉ đổ bóng quanh hình */
+}
+
     .link-box {
       background-color: lightblue;
       color: #003366;
@@ -94,7 +97,9 @@
 
   <h1>Các cổng thông tin điện tử</h1>
 
-  <div class="image-container"></div>
+  <div class="image-container">
+  <img src="nen.png" alt="Logo">
+</div>
 
   <div class="link-box" onclick="window.location.href='https://thanhkhe.danang.gov.vn/'">Phường Thanh Khê</div>
   <div class="link-box" onclick="window.location.href='https://danang.gov.vn/'">Thành phố Đà Nẵng</div>
