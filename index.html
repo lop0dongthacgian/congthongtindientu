@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng thông tin điện tử</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+  color: red;
+  font-size: 28px;              
+  font-weight: bold;            
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5), 0 0 8px rgba(255,255,255,0.6);
+  margin-top: 20px;             /* Cách trên một chút */
+  letter-spacing: 1px;          /* Giãn cách chữ nhẹ */
+  }
+
+    .image-container {
+  margin: 0.5px auto;
+  width: 150px;
+  height: auto;
+  display: inline-block;
+}
+
+.image-container img {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); /* chỉ đổ bóng quanh hình */
+}
+
+    .link-box {
+      background-color: lightblue;
+      color: #003366;
+      margin: 10px auto;
+      padding: 10px;
+      width: 170px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      transition: transform 0.2s;
+      font-weight: bold;
+    }
+    .link-box:hover {
+      transform: scale(1.05);
+    }
+    .footer {
+      margin-top: 20px;
+    }
+    .footer p {
+      color: #003366;
+    }
+    .footer p:last-child {
+      color: #660099;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Hộp hướng dẫn */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #e0f7fa;
+      color: #cc0000;
+      padding: 20px;
+      border: 2px solid #0097a7;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      width: 300px;
+    }
+    .popup button {
+      margin-top: 15px;
+      padding: 5px 10px;
+      background-color: #0097a7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+    .marquee-text {
+  color: red;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  margin: 10px 0 20px 0;
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>Các cổng thông tin điện tử</h1>
+
+  <div class="image-container">
+  <img src="nen.png" alt="Logo">
+  </div>
+    <marquee class="marquee-text" behavior="scroll" direction="left" scrollamount="9">
+  Thời điểm lịch sử mới, kỷ nguyên mới - kỷ nguyên vươn mình của dân tộc Việt Nam!
+</marquee>
+
+  <div class="link-box" onclick="window.location.href='https://thanhkhe.danang.gov.vn/'">Phường Thanh Khê</div>
+  <div class="link-box" onclick="window.location.href='https://danang.gov.vn/'">Thành phố Đà Nẵng</div>
+  <div class="link-box" onclick="window.location.href='https://dangcongsan.vn/'">Trung ương Đảng</div>
+  <div class="link-box" onclick="window.location.href='https://chinhphu.vn/'">Chính phủ</div>
+  <div class="link-box" onclick="window.location.href='https://dichvucong.gov.vn/p/home/dvc-trang-chu.html'">Dịch vụ công</div>
+  <div class="link-box" onclick="window.location.href='https://binhdanhocvuso.gov.vn/'">Bình dân học vụ số</div>
+  
+
+  <div class="footer">
+    <p>Ứng dụng dùng truy cập nhanh <br> các cổng thông tin điện tử</p>
+    <p onclick="showGuide()">Hướng dẫn</p>
+  </div>
+
+  <!-- Bảng hướng dẫn -->
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup" id="guideBox">
+    <h3>Hướng dẫn sử dụng</h3>
+    <p>Nhấn vào các ô chữ để truy cập vào các trang thông tin tương ứng.</p>
+    <button onclick="closeGuide()">Đóng</button>
+  </div>
+
+  <script>
+    function showGuide() {
+      document.getElementById('guideBox').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+    function closeGuide() {
+      document.getElementById('guideBox').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+      <footer style="
+  background-color: rgba(255, 255, 0, 0.5);
+  color: red;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 10;
+">
+  ©2025 - phường Thanh Khê, thành phố Đà Nẵng
+</footer>
+
+<script>
+  // thêm khoảng trống phía dưới để không bị footer che
+  document.body.style.paddingBottom = '45px';
+</script>
+</body>
+</html>
