@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Các cổng thông tin điện tử</title>
+ <meta name="theme-color" content="#a8edea">
+<meta name="apple-mobile-web-app-title" content="Các cổng thông tin điện tử">
+<link rel="manifest" href="manifest.json">
+<script src="pwa-core.js"></script>
+  <style>
+    body {
+      background: rgba(248, 254, 252, 1.00) !important;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+  color: lightblue; 
+  font-size: 25px;              
+  font-weight: bold;            
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,2);
+  margin-top: 10px;             /* Cách trên một chút */
+  letter-spacing: 1px;          /* Giãn cách chữ nhẹ */
+  border-top: 1px solid lightblue;  /* 👉 thêm 3 dòng sau: để có đường kẻ trên dưới */
+  border-bottom: 1px solid lightblue; /* 👉 1px: là độ rộng đường kẻ */
+  padding: 8px 0; /* 👉 chỉnh khoảng cách trên-dưới từ 6–12 tùy ý */
+  }
+
+    .image-container {
+  margin: 0.5px auto;
+  width: 150px;
+  height: auto;
+  display: inline-block;
+}
+
+.image-container img {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); /* chỉ đổ bóng quanh hình */
+}
+/* ── BACKGROUND CARO XÉO ───────────────── */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(37,99,235,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 90% 100%,  rgba(30,58,138,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 80%,   rgba(37,99,235,0.07) 0%, transparent 60%),
+    var(--bg);
+  pointer-events: none;
+}
+
+.bg-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.045;
+  background-image:
+    repeating-linear-gradient(45deg,  #1e3a8a 0, #1e3a8a 1px, transparent 0, transparent 50%),
+    repeating-linear-gradient(-45deg, #1e3a8a 0, #1e3a8a 1px, transparent 0, transparent 50%);
+  background-size: 10px 10px;
+  pointer-events: none;
+}
+    .bg-layer,
+.bg-pattern {
+  z-index: -1;
+}
+    .link-box {
+      background-color: lightblue;
+      color: #003366;
+      margin: 10px auto;
+      padding: 10px;
+      width: 170px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      transition: transform 0.2s;
+      font-weight: bold;
+    }
+    .link-box:hover {
+      transform: scale(1.05);
+    }
+    .footer {
+      margin-top: 20px;
+    }
+    .footer p {
+      color: #003366;
+    }
+    .footer p:last-child {
+      color: #660099;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Hộp hướng dẫn */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #e0f7fa;
+      color: #cc0000;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid #0097a7;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      width: 300px;
+    }
+    .popup button {
+      margin-top: 15px;
+      padding: 5px 10px;
+      background-color: #0097a7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;      
+    }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;      
+      background: rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+    .sequential-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 10px 0 20px 0;
+  display: flex;               /* canh giữa chữ */
+  align-items: center;         /* canh giữa theo chiều dọc */
+  height: 60px;                /* tăng nhẹ để chữ thoáng hơn */
+  position: relative;
+}
+.marquee-item {
+  color: #FF0000;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+  position: absolute;
+  left: 100%;
+  will-change: transform;
+}
+  </style>
+  
+</head>
+<body>
+<div class="bg-layer"></div>
+<div class="bg-pattern"></div>
+  <h1>Các cổng thông tin điện tử</h1>
+  <div class="image-container">
+  <img src="nen.png" alt="Logo">
+  </div>
+    <div class="sequential-marquee-container">
+  <div class="marquee-item" id="marqueeItem"></div>
+</div>
+
+  <div class="link-box" onclick="window.location.href='https://thanhkhe.danang.gov.vn/'">Phường Thanh Khê</div>
+  <div class="link-box" onclick="window.location.href='https://danang.gov.vn/'">Thành phố Đà Nẵng</div>
+  <div class="link-box" onclick="window.location.href='https://dangcongsan.vn/'">Trung ương Đảng</div>
+  <div class="link-box" onclick="window.location.href='https://chinhphu.vn/'">Chính phủ</div>
+  <div class="link-box" onclick="window.location.href='https://dichvucong.gov.vn/p/home/dvc-trang-chu.html'">Dịch vụ công</div>
+  <div class="link-box" onclick="window.location.href='https://binhdanhocvuso.gov.vn/'">Bình dân học vụ số</div>
+  
+  <div class="footer">
+    <p>Ứng dụng dùng truy cập nhanh <br> các cổng thông tin điện tử</p>
+    <p onclick="showGuide()">Hướng dẫn</p>
+  </div>
+
+  <!-- Bảng hướng dẫn -->
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup" id="guideBox">
+    <h3>Hướng dẫn sử dụng:</h3>
+    <p>Nhấn vào các ô chữ để truy cập <br> các trang thông tin tương ứng</p>
+    <button onclick="closeGuide()">Đóng</button>
+  </div>
+
+  <script>
+    function showGuide() {
+      document.getElementById('guideBox').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+    function closeGuide() {
+      document.getElementById('guideBox').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+
+<script>
+    const messages = [
+      "Sống, làm việc theo Hiến pháp và Pháp luật!",
+      "Kiên định mục tiêu độc lập dân tộc gắn liền với chủ nghĩa xã hội trên nền tảng chủ nghĩa Mác - Lênin, tư tưởng Hồ Chí Minh!",
+      "Xây dựng, phát triển đất nước trên tinh thần tự chủ, tự tin, tự lực, tự cường, tự hào dân tộc!",
+      "Phát huy ý chí và sức mạnh đại đoàn kết dân tộc kết hợp với sức mạnh thời đại để xây dựng và bảo vệ vững chắc Tổ quốc Việt Nam xã hội chủ nghĩa!"
+    ];
+    const item = document.getElementById('marqueeItem');
+    let currentIndex = 0;
+    let startTime = null;
+    let duration = 0;
+    let distance = 0;
+    // ⚙️ TỐC ĐỘ CHẠY (pixel mỗi giây) — chỉnh ở đây
+    const speedPxPerSec = 160; // 100–180 là hợp lý
+    function startNextMessage() {
+      const text = messages[currentIndex];
+      item.textContent = text;
+      // Đo chiều rộng thực tế của dòng chữ
+      const temp = document.createElement('div');
+      temp.style.visibility = 'hidden';
+      temp.style.position = 'absolute';
+      temp.style.whiteSpace = 'nowrap';
+      temp.style.fontSize = '35px';
+      temp.style.fontWeight = 'bold';
+      temp.style.fontFamily = 'Arial, sans-serif';
+      temp.textContent = text;
+      document.body.appendChild(temp);
+      const textWidth = temp.offsetWidth;
+      document.body.removeChild(temp);
+      // Tổng quãng đường = chiều rộng chữ + chiều rộng màn hình
+      distance = textWidth + window.innerWidth;
+      duration = (distance / speedPxPerSec) * 1000; // ms
+      startTime = performance.now();
+      requestAnimationFrame(animate);
+    }
+    function animate(time) {
+      if (!startTime) return;
+      const elapsed = time - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const x = -progress * distance;
+      item.style.transform = `translateX(${x}px)`;
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        // Xong → chuyển câu tiếp
+        currentIndex = (currentIndex + 1) % messages.length;
+        setTimeout(startNextMessage, 300); // nghỉ 0.3s (tuỳ chọn)
+      }
+    }
+    // Bắt đầu ngay khi tải trang
+    window.addEventListener('load', startNextMessage);
+  </script>
+
+  <script>
+    function showGuide() {
+      document.getElementById('guideBox').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+    function closeGuide() {
+      document.getElementById('guideBox').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+  
+</body>
+</html>
